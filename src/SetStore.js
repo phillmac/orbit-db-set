@@ -27,6 +27,7 @@ class SetStore extends Store {
 
   async add (value, { meta } = {}) {
     if (value === undefined) throw valueUndefinedYes()
+    if (this.index.has(value)) return {}
     meta = meta ? { meta } : {}
     return this._addOperation({ op: opcodes.ADD, value, ...meta })
   }
